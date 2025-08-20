@@ -3,15 +3,16 @@ import { Link } from 'react-router-dom';
 export default function ProductItem({
   product,
   id,
-  image,
   name,
   price,
   brand,
   rating,
 }) {
-  console.log(id, name, image, price, brand, rating);
   return (
-    <div className='p-4 flex flex-col items-center group cursor-pointer'>
+    <Link
+      className='p-4 flex flex-col items-center group cursor-pointer'
+      to={`/product/${id}`}
+    >
       {/* Product Image */}
       <div className='w-full rounded-xl relative h-48 sm:h-56 lg:h-64'>
         {product.image.length === 1 ? (
@@ -78,15 +79,14 @@ export default function ProductItem({
       </div>
 
       {/* Button */}
-      <Link
-        to={`/product/${id}`}
+      <div
         className='mt-4 w-full text-center border-2 border-[#410d1f] text-[#410d1f]
                    px-4 py-2 sm:px-6 sm:py-2 rounded-full
                    text-sm sm:text-base
                    transition-transform duration-300 hover:-translate-y-1 shadow-md'
       >
         Add to Cart
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 }

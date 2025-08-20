@@ -5,7 +5,7 @@ import Product from '../pages/Product';
 import Cart from '../pages/Cart';
 import Cheddar from '../pages/Cheddar';
 import Mozzarella from '../pages/Mozzarella';
-// import Contact from '../pages/contact';
+import Contact from '../pages/contact';
 import Deals from '../pages/Deals';
 import Login from '../pages/Login';
 import Orders from '../pages/Orders';
@@ -31,11 +31,10 @@ const router = createBrowserRouter([
         path: '/cart',
         element: <Cart />,
       },
-
-      // {
-      //   path: '/Contact',
-      //   element: <Contact />,
-      // },
+      {
+        path: '/Contact',
+        element: <Contact />,
+      },
       {
         path: '/Deals',
         element: <Deals />,
