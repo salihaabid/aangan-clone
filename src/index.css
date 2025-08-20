@@ -1,0 +1,20 @@
+@import 'tailwindcss';
+@plugin "daisyui";
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Archivo', sans-serif;
+  background-color: #fef7e5;
+  height: 100%;
+  color: black;
+}
+/* Kill DaisyUI / browser active flash */
+.menu li > *:focus,
+.menu li > *:active {
+  background-color: transparent !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
