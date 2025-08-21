@@ -8,20 +8,7 @@ const ShopContextProvider = (props) => {
   const [search, setSearch] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [cartItems, setCartItems] = useState({});
-  // const addToCart = async (productId, size) => {
-  //   let cartData = structuredClone(cartItems);
-  //   if (cartData[productId]) {
-  //     if (cartData[productId][size]) {
-  //       cartData[productId][size] += 1;
-  //     } else {
-  //       cartData[productId][size] = 1;
-  //     }
-  //   } else {
-  //     cartData[productId] = {};
-  //     cartData[productId][size] = 1;
-  //   }
-  //   setCartItems(cartData);
-  // };
+
   const addToCart = async (productId, quantity = 1, size) => {
     let cartData = structuredClone(cartItems);
 
@@ -39,12 +26,24 @@ const ShopContextProvider = (props) => {
     }
 
     setCartItems(cartData);
-    console.log('Updated Cart:', cartData); // ✅ debug log
   };
 
-  useEffect(() => {
-    console.log('Cart Items Updated:', cartItems);
-  }, [cartItems]);
+  const getCartCount = () => {
+    let count = 0;
+
+    // cartItems = { productId: { size: quantity } }
+    for (let productId in cartItems) {
+      for (let size in cartItems[productId]) {
+        count += cartItems[productId][size];
+      }
+    }
+
+    return count;
+  };
+
+  // useEffect(() => {
+  //   console.log('Cart Items Updated:', cartItems);
+  // }, [cartItems]);
   const value = {
     products,
     deliveryCharges,
@@ -54,6 +53,7 @@ const ShopContextProvider = (props) => {
     setShowSearch,
     cartItems,
     addToCart,
+    getCartCount,
   };
   return (
     <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>

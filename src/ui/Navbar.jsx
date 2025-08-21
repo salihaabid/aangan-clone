@@ -7,7 +7,7 @@ import { ShopContext } from '../context/ShopContext';
 export default function Navbar() {
   const [active, setActive] = useState('Home');
   const [openSubmenu, setOpenSubmenu] = useState(false);
-  const { setShowSearch } = useContext(ShopContext);
+  const { setShowSearch, getCartCount } = useContext(ShopContext);
   const navLinkClass = (name) =>
     `!text-[20px] !bg-transparent focus:!bg-transparent active:outline-none 
    hover:text-[#2a4125] hover:underline hover:decoration-[#2a4125]
@@ -351,7 +351,7 @@ export default function Navbar() {
 
               {/* Badge */}
               <p className='absolute right-[-5px] bottom-[-5px] w-4 h-4 flex items-center justify-center text-xs bg-black text-white rounded-full'>
-                2
+                {getCartCount()}
               </p>
             </Link>
           </div>

@@ -71,7 +71,7 @@ export default function Product() {
 
           {/* Price */}
           <p className='text-2xl font-bold text-[#2a4125] mt-2'>
-            Rs. {productData.price} PKR
+            Rs.{productData.price}.00 PKR
           </p>
 
           {/* Rating */}
