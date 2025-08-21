@@ -5,7 +5,7 @@ import Product from '../pages/Product';
 import Cart from '../pages/Cart';
 import Cheddar from '../pages/Cheddar';
 import Mozzarella from '../pages/Mozzarella';
-import Contact from '../pages/contact';
+import Contact from '../pages/Contact';
 import Deals from '../pages/Deals';
 import Login from '../pages/Login';
 import Orders from '../pages/Orders';
