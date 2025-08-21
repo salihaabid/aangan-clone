@@ -105,7 +105,7 @@ export default function Product() {
               {productData.sizes.map((size, index) => (
                 <span
                   key={index}
-                  className='px-4 py-2 border rounded-full cursor-pointer hover:bg-green-50'
+                  className='px-4 py-2 border rounded-full cursor-pointer'
                 >
                   {size}
                 </span>
@@ -128,10 +128,10 @@ export default function Product() {
 
           {/* Buttons */}
           <div className='mt-6 flex gap-4'>
-            <button className='flex-1 border border-green-900 py-3 rounded-full text-green-900 hover:bg-green-50'>
+            <button className='flex-1 border border-green-900 py-3 rounded-full text-green-900 '>
               Add to cart
             </button>
-            <button className='flex-1 bg-green-900 text-white py-3 rounded-full hover:bg-green-800'>
+            <button className='flex-1 bg-green-900 text-white py-3 rounded-full '>
               Buy it now
             </button>
           </div>
@@ -166,7 +166,7 @@ export default function Product() {
       {/* Related Products */}
       <RelatedProducts
         category={productData.category}
-        subCategory={productData.subCategory}
+        // subCategory={productData.subCategory}
       />
     </>
   );
