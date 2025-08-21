@@ -11,6 +11,6 @@ createRoot(document.getElementById('root')).render(
     <ShopContextProvider>
       <RouterProvider router={router} />
     </ShopContextProvider>
-    <ToastContainer position='top-right' autoClose={2000} />
+    <ToastContainer position='top-right' autoClose={1000} />
   </>
 );
