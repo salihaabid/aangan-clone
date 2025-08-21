@@ -36,7 +36,7 @@ import imgYellow_Burger_Slices_1kg_pack from './pack-yellow-burger-slices-1kg.we
 import imgCheesy_Slice_Deal from './cheesy-slice-deal.webp';
 import imgCheesy_Slice_Deal_pack from './pack-cheesy-slice-deal.webp';
 
-import imgPremium_White_Cheddar_Slices_1kg from './white-cheese-slices.webp';
+import imgPremium_White_Cheddar_Slices_1kg from './White-cheese-slices.webp';
 
 import img100_Mozzarella_Shredded_2kg from './Mozzarella-Cheese-2Kg.webp';
 import img100_Mozzarella_Shredded_2kg_pack from './Pack-Shredded-100_-Mozzarella-Cheese-2Kg.webp';
