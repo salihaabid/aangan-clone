@@ -13,16 +13,18 @@ import RelatedProducts from '../ui/RelatedProducts';
 
 export default function Product() {
   const { productId } = useParams();
-  const { products } = useContext(ShopContext);
+  const { products, addToCart } = useContext(ShopContext);
   const [productData, setProductData] = useState(null);
   const [image, setImage] = useState('');
   const [quantity, setQuantity] = useState(1);
+  const [selectedSize, setSelectedSize] = useState(null); // <-- NEW state
 
   const fetchProductData = () => {
     products.forEach((item) => {
       if (item._id === productId) {
         setProductData(item);
         setImage(item.image[0]);
+        setSelectedSize(item.sizes[0]); // <-- Default first size
       }
     });
   };
@@ -53,7 +55,7 @@ export default function Product() {
                 alt={productData.name}
                 onClick={() => setImage(img)}
                 className={`w-20 h-20 object-cover rounded-md cursor-pointer border ${
-                  img === image ? 'border-green-600' : 'border-gray-300'
+                  img === image ? 'border-[#2a4125]' : 'border-gray-300'
                 }`}
               />
             ))}
@@ -63,12 +65,12 @@ export default function Product() {
         {/* Right Side - Details */}
         <div>
           {/* Title */}
-          <h1 className='text-3xl font-semibold text-green-900'>
+          <h1 className='text-3xl font-semibold text-[#2a4125]'>
             {productData.name}
           </h1>
 
           {/* Price */}
-          <p className='text-2xl font-bold text-green-800 mt-2'>
+          <p className='text-2xl font-bold text-[#2a4125] mt-2'>
             Rs. {productData.price} PKR
           </p>
 
@@ -95,7 +97,7 @@ export default function Product() {
             >
               <FaPlus size={16} />
             </button>
-            <span className='ml-3 text-green-600 font-medium'>✅ In Stock</span>
+            <span className='ml-3 text-[#2a4125] font-medium'>✅ In Stock</span>
           </div>
 
           {/* Sizes */}
@@ -105,7 +107,13 @@ export default function Product() {
               {productData.sizes.map((size, index) => (
                 <span
                   key={index}
-                  className='px-4 py-2 border rounded-full cursor-pointer'
+                  onClick={() => setSelectedSize(size)}
+                  className={`px-6 py-2 rounded-full cursor-pointer border 
+        ${
+          selectedSize === size
+            ? 'bg-[#2a4125] text-[#fef7e5] border-[#2a4125]'
+            : 'border-[#2a4125] text-[#2a4125]'
+        }`}
                 >
                   {size}
                 </span>
@@ -114,7 +122,7 @@ export default function Product() {
           </div>
 
           {/* Features */}
-          <div className='flex gap-8 mt-6 text-gray-700'>
+          <div className='flex gap-8 mt-6 text-[#2a4125]'>
             <div className='flex items-center gap-2'>
               <FaLeaf size={18} /> Natural Product
             </div>
@@ -128,10 +136,14 @@ export default function Product() {
 
           {/* Buttons */}
           <div className='mt-6 flex gap-4'>
-            <button className='flex-1 border border-green-900 py-3 rounded-full text-green-900 '>
+            <button
+              className='flex-1 border border-[#2a4125] py-3 rounded-full text-[#2a4125] cursor-pointer'
+              onClick={() => addToCart(productData._id, quantity, selectedSize)}
+              // Pass selected size to addToCart
+            >
               Add to cart
             </button>
-            <button className='flex-1 bg-green-900 text-white py-3 rounded-full '>
+            <button className='flex-1 bg-[#2a4125] text-white py-3 rounded-full '>
               Buy it now
             </button>
           </div>
@@ -163,11 +175,9 @@ export default function Product() {
           </div>
         </div>
       </div>
+
       {/* Related Products */}
-      <RelatedProducts
-        category={productData.category}
-        // subCategory={productData.subCategory}
-      />
+      <RelatedProducts category={productData.category} />
     </>
   );
 }

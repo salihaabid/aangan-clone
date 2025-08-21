@@ -85,7 +85,7 @@ export default function ProductItem({
                    text-sm sm:text-base
                    transition-transform duration-300 hover:-translate-y-1 shadow-md'
       >
-        Add to Cart
+        Choose More options
       </div>
     </Link>
   );
