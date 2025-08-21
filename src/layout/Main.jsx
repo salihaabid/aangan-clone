@@ -3,15 +3,17 @@ import '../App.css';
 import Navbar from '../ui/Navbar';
 import Footer from '../ui/Footer';
 import SearchBar from '../ui/SearchBar';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import ScrollToTop from '../ui/ScrollTop';
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
 
 export default function Main() {
   return (
     <div className='bg-light-beige'>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
       <Navbar />
       <SearchBar />
+      <ScrollToTop />
       <Outlet />
       <Footer />
       {/* <div className="min-h-screen bg-light-beige flex items-center justify-center">

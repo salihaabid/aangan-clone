@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import { products } from '../assets/assets';
 
 export const ShopContext = createContext();
@@ -41,9 +41,11 @@ const ShopContextProvider = (props) => {
     return count;
   };
 
-  // useEffect(() => {
-  //   console.log('Cart Items Updated:', cartItems);
-  // }, [cartItems]);
+  const updateQuantity = async (itemId, size, quantity) => {
+    let cartData = structuredClone(cartItems);
+    cartData[itemId][size] = quantity;
+    setCartItems(cartData);
+  };
   const value = {
     products,
     deliveryCharges,
@@ -54,6 +56,7 @@ const ShopContextProvider = (props) => {
     cartItems,
     addToCart,
     getCartCount,
+    updateQuantity,
   };
   return (
     <ShopContext.Provider value={value}>{props.children}</ShopContext.Provider>

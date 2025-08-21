@@ -10,6 +10,7 @@ import {
   FaStar,
 } from 'react-icons/fa';
 import RelatedProducts from '../ui/RelatedProducts';
+import { toast } from 'react-toastify';
 
 export default function Product() {
   const { productId } = useParams();
@@ -31,6 +32,7 @@ export default function Product() {
 
   useEffect(() => {
     fetchProductData();
+    setQuantity(1); // reset quantity when product changes
   }, [productId, products]);
 
   if (!productData) {
@@ -85,14 +87,14 @@ export default function Product() {
           {/* Quantity Selector */}
           <div className='flex items-center mt-5 gap-3'>
             <button
-              className='p-2 border rounded-md'
+              className='p-2 border rounded-md cursor-pointer'
               onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
             >
               <FaMinus size={16} />
             </button>
             <span>{quantity}</span>
             <button
-              className='p-2 border rounded-md'
+              className='p-2 border rounded-md cursor-pointer'
               onClick={() => setQuantity(quantity + 1)}
             >
               <FaPlus size={16} />
@@ -138,12 +140,15 @@ export default function Product() {
           <div className='mt-6 flex gap-4'>
             <button
               className='flex-1 border border-[#2a4125] py-3 rounded-full text-[#2a4125] cursor-pointer'
-              onClick={() => addToCart(productData._id, quantity, selectedSize)}
+              onClick={() => {
+                addToCart(productData._id, quantity, selectedSize);
+                toast.success(`${productData.name} added to cart!`);
+              }}
               // Pass selected size to addToCart
             >
               Add to cart
             </button>
-            <button className='flex-1 bg-[#2a4125] text-white py-3 rounded-full '>
+            <button className='flex-1 bg-[#2a4125] text-white py-3 rounded-full cursor-pointer '>
               Buy it now
             </button>
           </div>

@@ -5,22 +5,18 @@ import { assets } from '../assets/assets';
 import { ShopContext } from '../context/ShopContext';
 
 export default function Navbar() {
-  const [active, setActive] = useState('Home');
   const [openSubmenu, setOpenSubmenu] = useState(false);
   const { setShowSearch, getCartCount } = useContext(ShopContext);
-  const navLinkClass = (name) =>
-    `!text-[20px] !bg-transparent focus:!bg-transparent active:outline-none 
-   hover:text-[#2a4125] hover:underline hover:decoration-[#2a4125]
-   ${
-     active === name
-       ? 'text-[#2a4125] underline decoration-[#2a4125]'
-       : 'text-[#77846a]'
-   }`;
 
-  const handleClick = (name) => {
-    setActive(name);
-    setOpenSubmenu(false);
-  };
+  // Use NavLink's isActive instead of manual state
+  const navLinkClass = ({ isActive }) =>
+    `!text-[20px] !bg-transparent focus:!bg-transparent active:outline-none 
+     hover:text-[#2a4125] hover:underline hover:decoration-[#2a4125]
+     ${
+       isActive
+         ? 'text-[#2a4125] underline decoration-[#2a4125]'
+         : 'text-[#77846a]'
+     }`;
 
   return (
     <header className='bg-[#fef7e5]'>
@@ -74,11 +70,7 @@ export default function Navbar() {
 
                   {/* Mobile Menu Items */}
                   <li>
-                    <NavLink
-                      to='/'
-                      onClick={() => handleClick('Home')}
-                      className={navLinkClass('Home')}
-                    >
+                    <NavLink to='/' className={navLinkClass}>
                       Home
                     </NavLink>
                   </li>
@@ -88,46 +80,29 @@ export default function Navbar() {
                         onClick={(e) => {
                           e.preventDefault();
                           setOpenSubmenu(!openSubmenu);
-                          setActive('Products');
                         }}
-                        className={navLinkClass('Products')}
+                        className={navLinkClass({ isActive: false })}
                       >
                         Products
                       </summary>
                       <ul className='p-2 bg-[#fef7e5] rounded-md shadow-md'>
                         <li>
-                          <NavLink
-                            to='/Collection'
-                            onClick={() => handleClick('Shop All')}
-                            className={navLinkClass('Shop All')}
-                          >
+                          <NavLink to='/Collection' className={navLinkClass}>
                             Shop All
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink
-                            to='/Cheddar'
-                            onClick={() => handleClick('Cheddar')}
-                            className={navLinkClass('Cheddar')}
-                          >
+                          <NavLink to='/Cheddar' className={navLinkClass}>
                             Cheddar
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink
-                            to='/Mozzarella'
-                            onClick={() => handleClick('Mozzarella')}
-                            className={navLinkClass('Mozzarella')}
-                          >
+                          <NavLink to='/Mozzarella' className={navLinkClass}>
                             Mozzarella
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink
-                            to='/Shredded'
-                            onClick={() => handleClick('Shredded')}
-                            className={navLinkClass('Shredded')}
-                          >
+                          <NavLink to='/Shredded' className={navLinkClass}>
                             Shredded
                           </NavLink>
                         </li>
@@ -135,38 +110,22 @@ export default function Navbar() {
                     </details>
                   </li>
                   <li>
-                    <NavLink
-                      to='/Deals'
-                      onClick={() => handleClick('Deals')}
-                      className={navLinkClass('Deals')}
-                    >
+                    <NavLink to='/Deals' className={navLinkClass}>
                       Deals
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink
-                      to='/Business'
-                      onClick={() => handleClick('Business Customers')}
-                      className={navLinkClass('Business Customers')}
-                    >
+                    <NavLink to='/Business' className={navLinkClass}>
                       Business Customers
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink
-                      to='/Contact'
-                      onClick={() => handleClick('Contact Us')}
-                      className={navLinkClass('Contact Us')}
-                    >
+                    <NavLink to='/Contact' className={navLinkClass}>
                       Contact Us
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink
-                      to='/About'
-                      onClick={() => handleClick('About Us')}
-                      className={navLinkClass('About Us')}
-                    >
+                    <NavLink to='/About' className={navLinkClass}>
                       About Us
                     </NavLink>
                   </li>
@@ -192,11 +151,7 @@ export default function Navbar() {
         <div className='navbar-center hidden lg:flex'>
           <ul className='menu menu-horizontal px-4'>
             <li>
-              <NavLink
-                to='/'
-                onClick={() => handleClick('Home')}
-                className={navLinkClass('Home')}
-              >
+              <NavLink to='/' className={navLinkClass}>
                 Home
               </NavLink>
             </li>
@@ -206,9 +161,8 @@ export default function Navbar() {
                   onClick={(e) => {
                     e.preventDefault();
                     setOpenSubmenu(!openSubmenu);
-                    setActive('Products');
                   }}
-                  className={navLinkClass('Products')}
+                  className={navLinkClass({ isActive: false })}
                 >
                   Products
                 </summary>
@@ -262,38 +216,22 @@ export default function Navbar() {
               </details>
             </li>
             <li>
-              <NavLink
-                to='/Deals'
-                onClick={() => handleClick('Deals')}
-                className={navLinkClass('Deals')}
-              >
+              <NavLink to='/Deals' className={navLinkClass}>
                 Deals
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to='/Business'
-                onClick={() => handleClick('Business Customers')}
-                className={navLinkClass('Business Customers')}
-              >
+              <NavLink to='/Business' className={navLinkClass}>
                 Business Customers
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to='/Contact'
-                onClick={() => handleClick('Contact Us')}
-                className={navLinkClass('Contact Us')}
-              >
+              <NavLink to='/Contact' className={navLinkClass}>
                 Contact Us
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to='/About'
-                onClick={() => handleClick('About Us')}
-                className={navLinkClass('About Us')}
-              >
+              <NavLink to='/About' className={navLinkClass}>
                 About Us
               </NavLink>
             </li>
