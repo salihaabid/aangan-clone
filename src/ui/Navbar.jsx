@@ -77,41 +77,65 @@ export default function Navbar() {
                       Home
                     </NavLink>
                   </li>
-                  <li>
-                    <details open={openSubmenu}>
-                      <summary
-                        onClick={(e) => {
-                          e.preventDefault();
-                          setOpenSubmenu(!openSubmenu);
+                  <li className='relative'>
+                    <button
+                      onClick={() => setOpenSubmenu(!openSubmenu)}
+                      className={navLinkClass({ isActive: false })}
+                    >
+                      Products
+                    </button>
+
+                    {openSubmenu && (
+                      <ul
+                        className='absolute left-0 p-2 pr-[25px] bg-[#fef7e5] rounded-[15px] shadow-md z-50'
+                        style={{
+                          borderTop: '2px solid #2a4125',
+                          borderLeft: '2px solid #2a4125',
+                          borderRight: '2px solid #2a4125',
+                          borderBottom: '4px solid #2a4125',
+                          padding: '10px 80px 0px 10px',
                         }}
-                        className={navLinkClass({ isActive: false })}
                       >
-                        Products
-                      </summary>
-                      <ul className='p-2 bg-[#fef7e5] rounded-md shadow-md'>
                         <li>
-                          <NavLink to='/Collection' className={navLinkClass}>
+                          <NavLink
+                            to='/Collection'
+                            onClick={() => setOpenSubmenu(false)}
+                            className={navLinkClass}
+                          >
                             Shop All
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink to='/Cheddar' className={navLinkClass}>
+                          <NavLink
+                            to='/Cheddar'
+                            onClick={() => setOpenSubmenu(false)}
+                            className={navLinkClass}
+                          >
                             Cheddar
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink to='/Mozzarella' className={navLinkClass}>
+                          <NavLink
+                            to='/Mozzarella'
+                            onClick={() => setOpenSubmenu(false)}
+                            className={navLinkClass}
+                          >
                             Mozzarella
                           </NavLink>
                         </li>
                         <li>
-                          <NavLink to='/Shredded' className={navLinkClass}>
+                          <NavLink
+                            to='/Shredded'
+                            onClick={() => setOpenSubmenu(false)}
+                            className={navLinkClass}
+                          >
                             Shredded
                           </NavLink>
                         </li>
                       </ul>
-                    </details>
+                    )}
                   </li>
+
                   <li>
                     <NavLink to='/Deals' className={navLinkClass}>
                       Deals
