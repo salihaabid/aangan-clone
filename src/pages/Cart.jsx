@@ -63,7 +63,7 @@ export default function Cart() {
 
   // 🛒 Filled cart UI
   return (
-    <div className='max-w-4xl mx-auto p-6'>
+    <div className='max-w-6xl mx-auto p-6'>
       <div className='flex justify-between items-center mb-6'>
         {/* Continue shopping link */}
         {/* Cart heading */}
@@ -76,7 +76,7 @@ export default function Cart() {
         </Link>
       </div>
       {/* Header row */}
-      <div className='grid grid-cols-3 text-gray-500 text-sm font-medium border-b pb-2'>
+      <div className='grid grid-cols-3 text-gray-500 text-sm font-medium  pb-2'>
         <span className='justify-self-start'>Product</span>
         <span className='justify-self-center'>Quantity</span>
         <span className='justify-self-end'>Total</span>
@@ -86,7 +86,7 @@ export default function Cart() {
         {cartData.map((item) => (
           <div
             key={`${item.id}-${item.size}`}
-            className='flex items-center justify-between border-b py-4'
+            className='flex items-center justify-between  py-4'
           >
             {/* Product info */}
             <Link

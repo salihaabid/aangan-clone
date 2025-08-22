@@ -7,7 +7,6 @@ import { ShopContext } from '../context/ShopContext';
 export default function Navbar() {
   const [openSubmenu, setOpenSubmenu] = useState(false);
   const { setShowSearch, getCartCount } = useContext(ShopContext);
-
   // Use NavLink's isActive instead of manual state
   const navLinkClass = ({ isActive }) =>
     `!text-[20px] !bg-transparent focus:!bg-transparent active:outline-none 
@@ -17,6 +16,10 @@ export default function Navbar() {
          ? 'text-[#2a4125] underline decoration-[#2a4125]'
          : 'text-[#77846a]'
      }`;
+
+  const handleClick = () => {
+    setOpenSubmenu(false);
+  };
 
   return (
     <header className='bg-[#fef7e5]'>
@@ -288,7 +291,7 @@ export default function Navbar() {
               />
 
               {/* Badge */}
-              <p className='absolute right-[-5px] bottom-[-5px] w-4 h-4 flex items-center justify-center text-xs bg-black text-white rounded-full'>
+              <p className='absolute right-[-5px] bottom-[-5px] w-4 h-4 flex items-center justify-center text-xs bg-[#2a4125] text-white rounded-full'>
                 {getCartCount()}
               </p>
             </Link>
