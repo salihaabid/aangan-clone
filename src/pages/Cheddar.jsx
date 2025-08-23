@@ -34,7 +34,7 @@ export default function BestSeller() {
       </div>
 
       {/* 🔹 Now phone also has 2 columns */}
-      <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-3 sm:p-6 ml-14'>
+      <div className='grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 p-3 sm:p-6 ml-14 ml-[-10px]'>
         {filteredProducts.map((product) => (
           <ProductItem
             product={product}

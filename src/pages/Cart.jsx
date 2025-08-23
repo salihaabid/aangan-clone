@@ -205,7 +205,6 @@ export default function Cart() {
         <button
           className='mt-4 bg-[#2a4125] text-white px-6 py-3 rounded-full shadow hover:bg-[#3a5135] transition cursor-pointer'
           onClick={() => {
-            clearCart();
             navigate('/CheckOut');
           }}
         >
